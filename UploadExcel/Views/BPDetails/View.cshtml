@@ -2,11 +2,55 @@
 @{
     ViewData["Title"] = "Buyer Details";
 }
+<!-- Header Navigation -->
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #077A7D;">
+        <div class="container-fluid justify-content-end">
+            <a class="navbar-brand ms-auto text-white" asp-area="" asp-controller="Home" asp-action="Index">UploadExcel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="BusinessPartners" asp-action="Index">BP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="UploadExcel">Upload Excel File</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<!-- Styles -->
+<style>
+    .card {
+        border-radius: 8px;
+    }
+
+    .card-header {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .card:hover {
+        box-shadow: 0 0 12px rgba(0, 123, 255, 0.3);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+</style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<h2 class="text-center mb-5">Buyer Details</h2> 
-
-<!-- Nav Tabs -->
+<!-- Tabs -->
 <ul class="nav nav-tabs mb-4" id="bpTabs" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="nav-link active" id="principal-tab" data-bs-toggle="tab" data-bs-target="#principal" type="button" role="tab" aria-controls="principal" aria-selected="true">
@@ -14,28 +58,62 @@
         </button>
     </li>
     <li class="nav-item" role="presentation">
+        <button class="nav-link" id="spouse-tab" data-bs-toggle="tab" data-bs-target="#spouse" type="button" role="tab" aria-controls="spouse" aria-selected="false">
+            Spouse
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
         <button class="nav-link" id="co-tab" data-bs-toggle="tab" data-bs-target="#co" type="button" role="tab" aria-controls="co" aria-selected="false">
-            Co-Buyer / Spouse
+            Co-Buyer
         </button>
     </li>
 </ul>
 
 <!-- Tab Content -->
 <div class="tab-content" id="bpTabContent">
-    <!-- Principal Buyer Tab -->
     <div class="tab-pane fade show active" id="principal" role="tabpanel" aria-labelledby="principal-tab">
-        @Html.Partial("_BuyerDetailsPartial", Model.PrincipalBuyer)
-    </div>
-
-    <!-- Co-Buyer Tab -->
-    <div class="tab-pane fade" id="co" role="tabpanel" aria-labelledby="co-tab">
-        @if (Model.CoBuyer != null)
+        @if (Model?.PrincipalBuyer != null)
         {
-            @Html.Partial("_BuyerDetailsPartial", Model.CoBuyer)
+            @Html.Partial("_BuyerDetailsPartial", Model.PrincipalBuyer, new ViewDataDictionary(ViewData) { { "BuyerTypeClass", "buyer-item principal-buyer" } })
         }
         else
         {
-            <p class="text-muted mt-3">No Co-Buyer or Spouse data.</p>
+            <p class="text-muted mt-3">No Principal Buyer data available.</p>
+        }
+    </div>
+
+    <div class="tab-pane fade" id="co" role="tabpanel" aria-labelledby="co-tab">
+        @if (Model?.CoBuyers != null && Model.CoBuyers.Any())
+        {
+            for (int i = 0; i < Model.CoBuyers.Count; i++)
+            {
+                <div class="card shadow-sm mb-5 border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Co-Buyer @(i + 1)</h5>
+                    </div>
+                    <div class="card-body">
+                        @Html.Partial("_BuyerDetailsPartial", Model.CoBuyers[i])
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted mt-3">No Co-Buyer data.</p>
+        }
+    </div>
+
+    <div class="tab-pane fade" id="spouse" role="tabpanel" aria-labelledby="spouse-tab">
+        @if (Model?.Spouses != null && Model.Spouses.Any())
+        {
+            foreach (var spouse in Model.Spouses)
+            {
+                @Html.Partial("_BuyerDetailsPartial", spouse)
+            }
+        }
+        else
+        {
+            <p class="text-muted mt-3">No Spouse data.</p>
         }
     </div>
 </div>

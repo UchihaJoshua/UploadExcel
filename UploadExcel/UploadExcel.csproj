@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="wwwroot\Controllers\BPDetailsController.cs" />
+    <Compile Include="wwwroot\Controllers\BusinessPartnersController.cs" />
+    <Compile Include="wwwroot\Controllers\HomeController.cs" />
+    <Compile Include="wwwroot\Controllers\SellerDetailsController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ExcelDataReader" Version="3.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.3" />
@@ -20,6 +27,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="WebGrease" Version="1.6.0" />
   </ItemGroup>
 
   <ItemGroup>

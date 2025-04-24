@@ -1,0 +1,78 @@
+﻿@model List<UploadExcel.Models.Seller>
+@{
+    ViewData["Title"] = "Seller Details";
+}
+
+<style>
+    .details-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fdfdfd;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[readonly] {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 8px;
+        border-radius: 4px;
+    }
+
+    .details-section {
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        text-align: left;
+        margin: 30px 0 15px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 5px;
+    }
+
+    .search-box {
+        max-width: 400px;
+        margin: 20px auto;
+    }
+</style>
+
+<div class="section-title">Sales Proponents</div>
+
+@foreach (var seller in Model)
+{
+    <div class="details-section">
+        <div class="details-form">
+            <div class="form-group">
+                <label>Seller Type</label>
+                <input type="text" readonly value="@seller.seller_type_roles" />
+            </div>
+            
+            
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" readonly value="@seller.fullname" />
+            </div>
+           
+            <div class="form-group">
+                <label>Contract Number</label>
+                <input type="text" readonly value="@seller.sales_contract_number" />
+            </div>
+        </div>
+    </div>
+}

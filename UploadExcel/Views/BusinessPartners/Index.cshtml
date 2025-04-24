@@ -1,138 +1,138 @@
-﻿@model List<BussinessPartners>
-@{
-}
+﻿@* @model List<BussinessPartners> *@
+@* @{ *@
+@* } *@
 
-<style>
-    .table-wrapper {
-        text-align: left;
-        margin-left: 0;
-        width: auto;
-        max-width: 100%;
-        overflow-x: auto;
-    }
+@* <style> *@
+@*     .table-wrapper { *@
+@*         text-align: left; *@
+@*         margin-left: 0; *@
+@*         width: auto; *@
+@*         max-width: 100%; *@
+@*         overflow-x: auto; *@
+@*     } *@
 
-    .no-wrap-table th,
-    .no-wrap-table td {
-        padding: 10px;
-        vertical-align: top;
-    }
+@*     .no-wrap-table th, *@
+@*     .no-wrap-table td { *@
+@*         padding: 10px; *@
+@*         vertical-align: top; *@
+@*     } *@
 
-    .no-wrap-table th {
-        white-space: nowrap;
-    }
+@*     .no-wrap-table th { *@
+@*         white-space: nowrap; *@
+@*     } *@
 
-    .no-wrap-table td {
-        white-space: normal;
-    }
+@*     .no-wrap-table td { *@
+@*         white-space: normal; *@
+@*     } *@
 
-        .no-wrap-table th:nth-child(n),
-        .no-wrap-table td:nth-child(n) {
-            min-width: 150px;
-        }
+@*         .no-wrap-table th:nth-child(n), *@
+@*         .no-wrap-table td:nth-child(n) { *@
+@*             min-width: 150px; *@
+@*         } *@
 
-        .no-wrap-table th:nth-child(2),
-        .no-wrap-table td:nth-child(2) {
-            min-width: 180px;
-        }
+@*         .no-wrap-table th:nth-child(2), *@
+@*         .no-wrap-table td:nth-child(2) { *@
+@*             min-width: 180px; *@
+@*         } *@
 
-        .no-wrap-table th:last-child,
-        .no-wrap-table td:last-child {
-            min-width: 120px;
-        }
+@*         .no-wrap-table th:last-child, *@
+@*         .no-wrap-table td:last-child { *@
+@*             min-width: 120px; *@
+@*         } *@
 
-    tr.clickable-row {
-        cursor: pointer;
-    }
+@*     tr.clickable-row { *@
+@*         cursor: pointer; *@
+@*     } *@
 
-        tr.clickable-row:hover {
-            background-color: #f1f1f1;
-        }
-</style>
+@*         tr.clickable-row:hover { *@
+@*             background-color: #f1f1f1; *@
+@*         } *@
+@* </style> *@
 
-<h2 class="text-center mb-5">Business Partners</h2>
-<div class="table-wrapper">
-    <table class="table table-bordered table-striped no-wrap-table">
-        <thead class="table-dark">
-            <tr>
+@* <h2 class="text-center mb-5">Business Partners</h2> *@
+@* <div class="table-wrapper"> *@
+@*     <table class="table table-bordered table-striped no-wrap-table"> *@
+@*         <thead class="table-dark"> *@
+@*             <tr> *@
                 
-                <th>Fullname</th>
+@*                 <th>Fullname</th> *@
                 
-                <th>Birthdate</th>
-                <th>Age</th>
-                <th>Age Category</th>
-                <th>Gender</th>
-                <th>Civil Status</th>
-                <th>Email</th>
-                <th>Contact Number</th>
-                <th>Client Base</th>
-                <th>Citizenship</th>
-                <th>Nationality</th>
-                <th>Job Title</th>
-                <th>Demographic by Market</th>
-                <th>Employment Category</th>
-                <th>Company Name</th>
-                <th>Industry Type</th>
-                <th>Employment Country</th>
-                <th>Reason for Purchase</th>
-                <th>Number of Homes in PH</th>
-                <th>With Other CPGI Units</th>
-                <th>CPGI Unit Number</th>
-                <th>With Dependents</th>
-                <th>No of Dependents</th>
-                <th>Income Declared PB</th>
-                <th>Total Income with Co-Buyer</th>
-            </tr>
-        </thead>
+@*                 <th>Birthdate</th> *@
+@*                 <th>Age</th> *@
+@*                 <th>Age Category</th> *@
+@*                 <th>Gender</th> *@
+@*                 <th>Civil Status</th> *@
+@*                 <th>Email</th> *@
+@*                 <th>Contact Number</th> *@
+@*                 <th>Client Base</th> *@
+@*                 <th>Citizenship</th> *@
+@*                 <th>Nationality</th> *@
+@*                 <th>Job Title</th> *@
+@*                 <th>Demographic by Market</th> *@
+@*                 <th>Employment Category</th> *@
+@*                 <th>Company Name</th> *@
+@*                 <th>Industry Type</th> *@
+@*                 <th>Employment Country</th> *@
+@*                 <th>Reason for Purchase</th> *@
+@*                 <th>Number of Homes in PH</th> *@
+@*                 <th>With Other CPGI Units</th> *@
+@*                 <th>CPGI Unit Number</th> *@
+@*                 <th>With Dependents</th> *@
+@*                 <th>No of Dependents</th> *@
+@*                 <th>Income Declared PB</th> *@
+@*                 <th>Total Income with Co-Buyer</th> *@
+@*             </tr> *@
+@*         </thead> *@
 
-        <tbody>
-            @foreach (var bpPartners in Model)
-            {
-                <tr class="clickable-row" data-href="@Url.Action("View", "BPDetails", new { Pb_number = bpPartners.bp_number })">
+@*         <tbody> *@
+@*             @foreach (var bpPartners in Model) *@
+@*             { *@
+@*                 <tr class="clickable-row" data-href="@Url.Action("View", "BPDetails", new { Pb_number = bpPartners.bp_number })"> *@
 
                     
-                    <td>@bpPartners.fullname</td>
-                    <td>@bpPartners.birthdate</td>
-                    <td>@bpPartners.age</td>
-                    <td>@bpPartners.age_category</td>
-                    <td>@bpPartners.gender</td>
-                    <td>@bpPartners.civil_status</td>
-                    <td>@bpPartners.Email</td>
-                    <td>@bpPartners.contact_number</td>
-                    <td>@bpPartners.client_base</td>
-                    <td>@bpPartners.citizenship</td>
-                    <td>@bpPartners.nationality</td>
-                    <td>@bpPartners.job_title</td>
-                    <td>@bpPartners.demographic_by_market</td>
-                    <td>@bpPartners.employment_category</td>
-                    <td>@bpPartners.company_name</td>
-                    <td>@bpPartners.industry_type</td>
-                    <td>@bpPartners.employment_country</td>
-                    <td>@bpPartners.reason_for_purchase</td>
-                    <td>@bpPartners.number_of_homes_in_ph</td>
-                    <td>@bpPartners.with_other_cpgi_units</td>
-                    <td>@bpPartners.cpgi_unit_no</td>
-                    <td>@bpPartners.with_dependents</td>
-                    <td>@bpPartners.no_of_dependents</td>
-                    <td>@bpPartners.income_declared_pb</td>
-                    <td>@bpPartners.total_income</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+@*                     <td>@bpPartners.fullname</td> *@
+@*                     <td>@bpPartners.birthdate</td> *@
+@*                     <td>@bpPartners.age</td> *@
+@*                     <td>@bpPartners.age_category</td> *@
+@*                     <td>@bpPartners.gender</td> *@
+@*                     <td>@bpPartners.civil_status</td> *@
+@*                     <td>@bpPartners.Email</td> *@
+@*                     <td>@bpPartners.contact_number</td> *@
+@*                     <td>@bpPartners.client_base</td> *@
+@*                     <td>@bpPartners.citizenship</td> *@
+@*                     <td>@bpPartners.nationality</td> *@
+@*                     <td>@bpPartners.job_title</td> *@
+@*                     <td>@bpPartners.demographic_by_market</td> *@
+@*                     <td>@bpPartners.employment_category</td> *@
+@*                     <td>@bpPartners.company_name</td> *@
+@*                     <td>@bpPartners.industry_type</td> *@
+@*                     <td>@bpPartners.employment_country</td> *@
+@*                     <td>@bpPartners.reason_for_purchase</td> *@
+@*                     <td>@bpPartners.number_of_homes_in_ph</td> *@
+@*                     <td>@bpPartners.with_other_cpgi_units</td> *@
+@*                     <td>@bpPartners.cpgi_unit_no</td> *@
+@*                     <td>@bpPartners.with_dependents</td> *@
+@*                     <td>@bpPartners.no_of_dependents</td> *@
+@*                     <td>@bpPartners.income_declared_pb</td> *@
+@*                     <td>@bpPartners.total_income</td> *@
+@*                 </tr> *@
+@*             } *@
+@*         </tbody> *@
+@*     </table> *@
+@* </div> *@
 
-@section Scripts {
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const rows = document.querySelectorAll("tr.clickable-row");
-            rows.forEach(row => {
-                row.addEventListener("click", () => {
-                    const href = row.getAttribute("data-href");
-                    if (href) {
-                        window.location.href = href;
-                    }
-                });
-            });
-        });
-    </script>
-}
+@* @section Scripts { *@
+@*     <script> *@
+@*         document.addEventListener("DOMContentLoaded", function () { *@
+@*             const rows = document.querySelectorAll("tr.clickable-row"); *@
+@*             rows.forEach(row => { *@
+@*                 row.addEventListener("click", () => { *@
+@*                     const href = row.getAttribute("data-href"); *@
+@*                     if (href) { *@
+@*                         window.location.href = href; *@
+@*                     } *@
+@*                 }); *@
+@*             }); *@
+@*         }); *@
+@*     </script> *@
+@* } *@

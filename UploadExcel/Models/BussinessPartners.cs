@@ -3,7 +3,7 @@
     public class BussinessPartners
     {
 
-
+        public string? sales_contract_number { get; set; }  // Nullable string
         public string? role { get; set; }  // Nullable string
         public string? bp_number { get; set; }  // Nullable string
         public string? fullname { get; set; }  // Nullable string

@@ -1,8 +1,10 @@
-﻿@model BussinessPartners
+﻿@model UploadExcel.Models.BussinessPartners
 
 @{
     ViewData["Title"] = "Buyer Details";
+    var buyerClass = ViewData["BuyerTypeClass"] as string ?? "buyer-item";
 }
+
 
 <style>
     .details-form {
@@ -31,7 +33,7 @@
     }
 
     .details-section {
-        margin-bottom: 40px;
+        margin-bottom: 50px;
     }
 
     .details-actions {
@@ -42,15 +44,21 @@
     .btn + .btn {
         margin-left: 15px;
     }
+
+    .section-title {
+        text-align: left;
+        margin: 30px 0 15px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 5px;
+    }
 </style>
 
-
-
 <!-- Section: Basic Information -->
-<div class="details-section">
-    <h4>Basic Information</h4>
+<div class="@buyerClass">
+    <div class="section-title">Basic Information</div>
     <div class="details-form">
-        
         <div class="form-group">
             <label>Full Name</label>
             <input type="text" readonly value="@Model.fullname" />
@@ -88,7 +96,7 @@
 
 <!-- Section: Employment & Citizenship -->
 <div class="details-section">
-    <h4>Employment & Citizenship</h4>
+    <div class="section-title">Employment & Citizenship</div>
     <div class="details-form">
         <div class="form-group">
             <label>Job Title</label>
@@ -123,9 +131,8 @@
 
 <!-- Section: Buyer Info & Income -->
 <div class="details-section">
-    <h4>Buyer Info & Income</h4>
+    <div class="section-title">Buyer Info & Income</div>
     <div class="details-form">
-
         <div class="form-group">
             <label>Client Base</label>
             <input type="text" readonly value="@Model.client_base" />
@@ -155,7 +162,7 @@
 
 <!-- Section: Housing & Dependents -->
 <div class="details-section">
-    <h4>Housing & Dependents</h4>
+    <div class="section-title">Housing & Dependents</div>
     <div class="details-form">
         <div class="form-group">
             <label>Number of Homes in PH</label>
@@ -179,11 +186,3 @@
         </div>
     </div>
 </div>
-
-<!-- Action Buttons -->
-<div class="details-actions">
-    <a class="btn btn-primary" asp-controller="BussinessPartners" asp-action="Edit" asp-route-Index="@Model.bp_number">Edit</a>
-    <a class="btn btn-danger" asp-controller="BussinessPartners" asp-action="Delete" asp-route-Index="@Model.bp_number">Delete</a>
-    <a class="btn btn-secondary" asp-controller="BussinessPartners" asp-action="Index">Back to List</a>
-</div>
-
