@@ -3,7 +3,7 @@ using UploadExcel.Data;
 using UploadExcel.Models;
 using System.Linq;
 
-namespace UploadExcel.Controllers
+namespace UploadExcel.Data.Controllers
 {
     public class BPDetailsController : Controller
     {

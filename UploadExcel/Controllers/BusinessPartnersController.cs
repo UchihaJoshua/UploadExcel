@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UploadExcel.Data;
 
-namespace UploadExcel.Controllers
+namespace UploadExcel.Data.Controllers
 {
     public class BusinessPartnersController : Controller
     {

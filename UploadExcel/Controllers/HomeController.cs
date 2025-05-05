@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Linq;
 
-namespace UploadExcel.Controllers
+namespace UploadExcel.Data.Controllers
 {
     public class HomeController : Controller
     {

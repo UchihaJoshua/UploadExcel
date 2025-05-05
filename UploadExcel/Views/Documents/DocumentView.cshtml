@@ -1,0 +1,42 @@
+﻿@model IEnumerable<UploadExcel.Models.DocumentSubmitted>
+
+@{
+    ViewData["Title"] = "Document Submitted";
+}
+
+<h2>Document Submitted</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Sales Contract Number</th>
+            <th>BP Number</th>
+            <th>Unit Code</th>
+            <th>Document Code</th>
+            <th>Document Date Submitted</th>
+            <th>Yes or No</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var doc in Model)
+            {
+                <tr>
+                    <td>@doc.sales_contract_number</td>
+                    <td>@doc.bp_number</td>
+                    <td>@doc.unit_code</td>
+                    <td>@doc.document_code</td>
+                    <td>@doc.document_date_submitted?.ToString("yyyy-MM-dd")</td>
+                    <td>@doc.yes_or_no</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">No documents found.</td>
+            </tr>
+        }
+    </tbody>
+</table>

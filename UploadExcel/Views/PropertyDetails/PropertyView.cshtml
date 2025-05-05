@@ -1,0 +1,157 @@
+﻿@model UploadExcel.Models.PropertyDetailsViewModel
+
+@{
+    ViewData["Title"] = "Property View";
+}
+<!-- Header Navigation -->
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #077A7D;">
+        <div class="container-fluid justify-content-end">
+            <a class="navbar-brand ms-auto text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="BusinessPartners" asp-action="Index">BP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="UploadExcel">Upload Excel File</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Tabs Navigation -->
+<ul class="nav nav-tabs mt-4" id="propertyTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="property-tab" data-bs-toggle="tab" data-bs-target="#property" type="button" role="tab" aria-controls="property" aria-selected="true">
+            Property Info
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="credit-tab" data-bs-toggle="tab" data-bs-target="#credit" type="button" role="tab" aria-controls="credit" aria-selected="false">
+            Credit Review
+        </button>
+    </li>
+</ul>
+
+<!-- Tabs Content -->
+<div class="tab-content mt-3" id="propertyTabContent">
+    <!-- Property Info Tab -->
+    <div class="tab-pane fade show active" id="property" role="tabpanel" aria-labelledby="property-tab">
+        @if (Model.Properties != null && Model.Properties.Any())
+        {
+            <div class="section-title">Property Information</div>
+            @foreach (var property in Model.Properties)
+            {
+                <div class="details-form mb-5">
+                    <div class="form-group"><label>Property Type</label><input type="text" readonly value="@property.Property_type" /></div>
+                    <div class="form-group"><label>Project</label><input type="text" readonly value="@property.Project" /></div>
+                    <div class="form-group"><label>Building Phase</label><input type="text" readonly value="@property.Building_Phase" /></div>
+                    <div class="form-group"><label>Floor Block</label><input type="text" readonly value="@property.Floor_Block" /></div>
+                    <div class="form-group"><label>Unit Code</label><input type="text" readonly value="@property.Unit_Code" /></div>
+                    <div class="form-group"><label>View</label><input type="text" readonly value="@property.View" /></div>
+                    <div class="form-group"><label>Unit Type</label><input type="text" readonly value="@property.Unit_Type" /></div>
+                    <div class="form-group"><label>Unit Area</label><input type="text" readonly value="@property.Unit_Area" /></div>
+                    <div class="form-group"><label>Balcony Area</label><input type="text" readonly value="@property.Balcony_Area" /></div>
+                    <div class="form-group"><label>Total Unit Area</label><input type="text" readonly value="@property.Total_Unit_Area" /></div>
+                    <div class="form-group"><label>Status in General</label><input type="text" readonly value="@property.Status_In_General" /></div>
+                    <div class="form-group"><label>Milestone</label><input type="text" readonly value="@property.Milestone" /></div>
+                    <div class="form-group"><label>Status Color</label><input type="text" readonly value="@property.Status_Color" /></div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No property data found.</p>
+        }
+    </div>
+
+    <!-- Credit Review Tab -->
+    <div class="tab-pane fade" id="credit" role="tabpanel" aria-labelledby="credit-tab">
+        @if (Model.CreditReviews != null && Model.CreditReviews.Any())
+        {
+            <div class="section-title">Credit Review Details</div>
+            @foreach (var item in Model.CreditReviews)
+            {
+                <div class="details-form mb-5">
+                    <div class="form-group"><label>Sales Contract</label><input type="text" readonly value="@item.sales_contract_number" /></div>
+                    <div class="form-group"><label>Project</label><input type="text" readonly value="@item.project" /></div>
+                    <div class="form-group"><label>Building Phase</label><input type="text" readonly value="@item.building_phase" /></div>
+                    <div class="form-group"><label>Floor Block</label><input type="text" readonly value="@item.floor_block" /></div>
+                    <div class="form-group"><label>Unit Code</label><input type="text" readonly value="@item.unit_code" /></div>
+                    <div class="form-group"><label>CI Result</label><input type="text" readonly value="@item.ci_result" /></div>
+                    <div class="form-group"><label>CMAP Result</label><input type="text" readonly value="@item.cmap_result" /></div>
+                    <div class="form-group"><label>CI_Remarks</label><input type="text" readonly value="@item.ci_remarks" /></div>
+                    <div class="form-group"><label>NDI Status</label><input type="text" readonly value="@item.ndi_status" /></div>
+                    <div class="form-group"><label>Bank Approvable</label><input type="text" readonly value="@item.is_bank_approvable" /></div>
+                    <div class="form-group"><label>Red Tag</label><input type="text" readonly value="@item.red_tag" /></div>
+                    <div class="form-group"><label>Red Tag Reason</label><input type="text" readonly value="@item.red_tag_reason" /></div>
+                    <div class="form-group"><label>CI Completion Date</label><input type="text" readonly value="@item.ci_completion_date?.ToString("MMMM dd, yyyy")" /></div>
+                    <div class="form-group"><label>Type of Income</label><input type="text" readonly value="@item.type_of_income" /></div>
+                    <div class="form-group"><label>NDI Rate</label><input type="text" readonly value="@item.ndi_rate" /></div>
+                    <div class="form-group"><label>Net Disposable Income</label><input type="text" readonly value="@item.net_disposable_income" /></div>
+                    <div class="form-group"><label>Other Loans</label><input type="text" readonly value="@item.other_loans" /></div>
+                    <div class="form-group"><label>Net NDI</label><input type="text" readonly value="@item.net_ndi" /></div>
+                    <div class="form-group"><label>NDI vs Bank MA TOB AMT</label><input type="text" readonly value="@item.ndi_vs_bank_ma_tob_amt" /></div>
+                    <div class="form-group"><label>Percent of NDI vs MA</label><input type="text" readonly value="@item.percent_of_ndi_vs_ma" /></div>
+                    <div class="form-group"><label>NDI Category</label><input type="text" readonly value="@item.ndi_category" /></div>
+                    <div class="form-group"><label>Max Term</label><input type="text" readonly value="@item.max_term" /></div>
+                    <div class="form-group"><label>Extimated Max Term</label><input type="text" readonly value="@item.extimated_max_term" /></div>
+                    
+                </div>
+            }
+        }
+        else
+        {
+            <p>No credit review data found.</p>
+        }
+    </div>
+</div>
+
+<!-- Styling -->
+<style>
+    .details-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[readonly] {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 8px;
+        border-radius: 4px;
+    }
+
+    .section-title {
+        text-align: left;
+        margin: 30px 0 15px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 5px;
+    }
+</style>
+
